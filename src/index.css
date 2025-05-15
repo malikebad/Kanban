@@ -1,0 +1,122 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.kanban-column {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 min-h-[500px] w-[300px] flex flex-col;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.kanban-column:hover {
+  @apply shadow-lg;
+  transform: translateY(-2px);
+}
+
+.kanban-card {
+  @apply bg-white dark:bg-gray-700 rounded-md shadow-sm p-3 mb-3 cursor-grab;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.kanban-card:hover {
+  @apply shadow-md;
+  transform: translateY(-2px);
+}
+
+.kanban-card.priority-high {
+  border-left-color: #ef4444;
+}
+
+.kanban-card.priority-medium {
+  border-left-color: #f59e0b;
+}
+
+.kanban-card.priority-low {
+  border-left-color: #10b981;
+}
+
+.column-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.column-title {
+  @apply font-bold text-lg;
+}
+
+.card-count {
+  @apply bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 text-xs font-medium px-2 py-1 rounded-full;
+}
+
+.add-card-button {
+  @apply w-full flex items-center justify-center py-2 mt-2 text-gray-500 hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors;
+}
+
+.dragging-card {
+  @apply opacity-50 rotate-2 scale-105;
+}
+
+.card-placeholder {
+  @apply border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md h-16 mb-3;
+}
+
+.column-drop-indicator {
+  @apply border-2 border-dashed border-primary/50 rounded-lg;
+}
